@@ -1,0 +1,53 @@
+--- OAUTH 2.0 &  OpenID Connect (OIDC)
+
+-- OAUTH 2.0
+
+Recource Owner:
+
+Authorization Server:
+    - genereerd acces tokens
+
+Recource Server:
+    - uesrdata
+
+- voobeeld:
+    - outlook
+
+1. Client meld zich aan bij AS
+2. AS geeft access token + refresh token
+  deze worden terug gestuurd naar client
+3. Client kan met tokens recources opvragen van RS
+
+
+
+-- server to server voorbeeld
+
+Client: RO
+APP1: ?
+APP2: AS + RS
+
+- setup
+1. APP1 meld app aan bij APP2 (redirect url, naam)
+2. APP2 geeft client_id en client_secret terug
+
+--  client auth flow
+
+3.  client surft naar APP1
+    -> APP 1 redirect client naar APP2
+       (met client_id en redirect url, reponse_type, scope)
+       (reponse_type: wat wilt APP1 van APP2, CODE -> authenticatie code krijgt APP1 terug van APP2)
+       (scope: tot wat wilt APP1 toegang binnen APP2, contacten, kalender)
+
+4.  Client meld zich aan bij APP2
+    (typisch login scherm met scopes die APP1 wilt gebruiken binnen APP2)
+
+5.  APP2 stuurt reponse_type type terug naar APP1
+    (bijvoorbeeld een authenticatie CODE)
+
+6.  APP1 stuurt authenticatie code, client_id, client_secret, grant_type
+    naar APP2 om een Authorizatie code terug te krijgen
+    (van authenticatie code naar authorizatie code)
+
+7. APP2 stuurt access_token, expires_in, token_type terug naar APP1
+
+8. APP1 kan aan RS van APP2 voor client informatie

@@ -1,0 +1,25 @@
+version: '3.0'
+services:
+    api:
+        build: backend/.
+        environment:
+          - AUTHORITY=dev-uzo17fcir336ze1h.us.auth0.com
+        ports:
+            - "8080:8080"
+
+    webapp:
+        build:
+            context: frontend/.
+            args:
+              - AUTHORITY=dev-uzo17fcir336ze1h.us.auth0.com
+              - CLIENT_ID=IKzhr3kTQ6AtnIMA0PXJptorXEcW5h8O
+        ports:
+            - "3000:80"
+
+    opa:
+        image: openpolicyagent/opa
+        ports:
+            - "8181:8181"
+        command:
+            - "run"
+            - "--server"
