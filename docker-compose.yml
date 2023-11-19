@@ -3,7 +3,7 @@ services:
     api:
         build: backend/.
         environment:
-          - AUTHORITY=dev-uzo17fcir336ze1h.us.auth0.com
+          - AUTHORITY=
         ports:
             - "8080:8080"
 
@@ -11,8 +11,8 @@ services:
         build:
             context: frontend/.
             args:
-              - AUTHORITY=dev-uzo17fcir336ze1h.us.auth0.com
-              - CLIENT_ID=IKzhr3kTQ6AtnIMA0PXJptorXEcW5h8O
+              - AUTHORITY=
+              - CLIENT_ID=
         ports:
             - "3000:80"
 
